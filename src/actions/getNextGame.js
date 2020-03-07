@@ -1,6 +1,6 @@
 import { setShedule, setLog, addEvent } from '../slices/rouletteSlice';
 import api from '../utils/api';
-import { getGame } from './getGame';
+import { getResults } from './getResults';
 import { getHistory } from './getHistory';
 import { counter } from './counter';
 
@@ -25,7 +25,7 @@ export const getNextGame = async dispatch => {
 
     setTimeout(() => {
       clearInterval(timer);
-      dispatch(getGame(game.id));
+      dispatch(getResults(game.id));
     }, timeToStart * 1000);
   }
 };
