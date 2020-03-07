@@ -5,13 +5,9 @@ import App from './components/App/App';
 import './index.scss';
 import store from './utils/store';
 
-import { BrowserRouter as Router } from 'react-router-dom';
-
 ReactDOM.render(
-  <Router>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </Router>,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('root')
 );
