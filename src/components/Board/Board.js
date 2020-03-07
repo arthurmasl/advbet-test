@@ -7,13 +7,16 @@ const Board = () => {
   const board = useSelector(selectBoard);
 
   return (
-    <div className="board">
-      {board.map(({ results, colors, positionToId }) => (
-        <button key={results} className={`board-cell ${colors}`}>
-          {positionToId}
-        </button>
-      ))}
-    </div>
+    <React.Fragment>
+      <h3>Game board</h3>
+      <div className="board">
+        {board.map(({ results, colors, positionToId }) => (
+          <button key={results} className={`board-cell ${colors}`}>
+            {positionToId}
+          </button>
+        ))}
+      </div>
+    </React.Fragment>
   );
 };
 

@@ -1,5 +1,66 @@
 .history {
+  margin-bottom: 3em;
   display: grid;
-  grid-gap: 3px;
-  grid-template-columns: repeat(auto-fit, minmax(2em, 2em));
+  grid-template-columns: 1fr 100%;
+
+  min-width: 1200px;
+  max-width: 1800px;
+}
+
+.history-labels {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+
+  div {
+    padding: 1em;
+    font-weight: bold;
+  }
+}
+
+.history-stats {
+  display: grid;
+  grid-template-columns: repeat(37, 1fr);
+
+  div {
+    padding: 1em;
+    font-weight: bold;
+  }
+
+  .cold {
+    grid-column: 1 / 6;
+  }
+
+  .neutral {
+    grid-column: 6 / 33;
+  }
+
+  .hot {
+    grid-column: 33 / 38;
+  }
+}
+
+.history-cells {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(2em, 1fr));
+}
+
+.history-cell {
+  text-align: center;
+
+  .slot-cell {
+    color: #fff;
+    padding: 1em 0;
+  }
+
+  .hits-cell {
+    padding: 1em 0;
+  }
+}
+
+.cold {
+  background-color: #d9edf7;
+}
+
+.hot {
+  background-color: #f2dede;
 }
