@@ -1,4 +1,4 @@
-import { setShedule, setLog, addEvent } from '../slices/rouletteSlice';
+import { setLog, addEvent } from '../slices/rouletteSlice';
 import api from '../utils/api';
 import { getResults } from './getResults';
 import { getHistory } from './getHistory';
@@ -17,7 +17,6 @@ export const getNextGame = async dispatch => {
   if (game) {
     const timeToStart = game.fakeStartDelta;
 
-    dispatch(setShedule(game));
     dispatch(setLog(`Sleeping for ${timeToStart} sec`));
     dispatch(addEvent({ id: game.id, time: timeToStart }));
 

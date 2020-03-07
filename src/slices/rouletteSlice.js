@@ -5,7 +5,6 @@ const rouletteSlice = createSlice({
   initialState: {
     config: {},
     stats: [],
-    shedule: {},
     log: [],
     events: [],
     isSpinning: false
@@ -17,10 +16,6 @@ const rouletteSlice = createSlice({
 
     setStats(state, action) {
       state.stats = action.payload;
-    },
-
-    setShedule(state, action) {
-      state.shedule = action.payload;
     },
 
     setLog(state, action) {
@@ -50,13 +45,11 @@ export const selectConfig = state => state.roulette.config;
 export const selectStats = state => state.roulette.stats;
 export const selectLog = state => state.roulette.log;
 export const selectIsSpinning = state => state.roulette.isSpinning;
-export const selectGame = state => state.roulette.shedule;
 export const selectEvents = state => state.roulette.events;
 
 export const {
   setConfig,
   setStats,
-  setShedule,
   setLog,
   setIsSpinning,
   addEvent,
