@@ -1,5 +1,6 @@
 import api from '../utils/api';
-import { setLog, setIsSpinning } from '../slices/rouletteSlice';
+import { setLog, setIsSpinning, setEvent } from '../slices/rouletteSlice';
+import { getNextGame } from './getNextGame';
 
 export const getGame = id => async (dispatch, getState) => {
   const state = getState();
@@ -13,6 +14,7 @@ export const getGame = id => async (dispatch, getState) => {
     if (!isSpinning) {
       dispatch(setIsSpinning(true));
       dispatch(setLog('Spinning the wheel'));
+      dispatch(setEvent({ message: 'Wheel is spinning', time: 0 }));
       setTimeout(() => {
         dispatch(getGame(id));
       }, 1000);
@@ -24,5 +26,10 @@ export const getGame = id => async (dispatch, getState) => {
     }
   } else {
     dispatch(setLog(`Result is ${data.result}`));
+    dispatch(setLog(`Stopping the wheel`));
+    dispatch(setEvent({ message: `Game ${data.id} result is ${data.result}` }));
+
+    dispatch(setIsSpinning(false));
+    dispatch(getNextGame);
   }
 };

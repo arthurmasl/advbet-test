@@ -7,7 +7,7 @@ const Board = () => {
   const board = useSelector(selectBoard);
 
   return (
-    <React.Fragment>
+    <div className="board-wrapper">
       <h3>Game board</h3>
       <div className="board">
         {board.map(({ results, colors, positionToId }) => (
@@ -16,7 +16,7 @@ const Board = () => {
           </button>
         ))}
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 

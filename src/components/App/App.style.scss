@@ -1,6 +1,31 @@
 .app-wrapper {
   min-width: 300px;
-  background-color: #f9f9f9;
   min-height: 100vh;
   padding: 1.5em;
+  display: grid;
+
+  max-width: 1300px;
+  margin: 0 auto;
+
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 100%;
+  grid-gap: 2em;
+  grid-template-areas:
+    'top top'
+    'left right';
+
+  h3 {
+    margin-bottom: 1em;
+  }
+}
+
+.top {
+  grid-area: top;
+}
+
+.left {
+  grid-area: left;
+}
+.right {
+  grid-area: right;
 }

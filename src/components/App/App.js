@@ -19,10 +19,17 @@ const App = () => {
 
   return (
     <div className="app-wrapper">
-      <History />
-      <Board />
-      <Events />
-      <Log />
+      <div className="top">
+        <History />
+      </div>
+      <div className="left">
+        <Board />
+        <Events />
+      </div>
+
+      <div className="right">
+        <Log />
+      </div>
     </div>
   );
 };

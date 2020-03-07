@@ -1,11 +1,9 @@
 import { getConfig } from './getConfig';
-import { getHistory } from './getHistory';
-import { getSheduledGames } from './getSheduledGames';
+import { getNextGame } from './getNextGame';
 import { setLog } from '../slices/rouletteSlice';
 
 export const startGame = async dispatch => {
   dispatch(setLog('Loading game board'));
   dispatch(getConfig);
-  dispatch(getHistory);
-  dispatch(getSheduledGames);
+  dispatch(getNextGame);
 };

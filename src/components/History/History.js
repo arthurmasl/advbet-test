@@ -13,7 +13,7 @@ const History = () => {
   const statusCn = i => (cold(i) ? 'cold' : hot(i) ? 'hot' : null);
 
   return (
-    <React.Fragment>
+    <div className="history-wrapper">
       <h3>Stats</h3>
 
       <div className="history">
@@ -40,7 +40,7 @@ const History = () => {
           </div>
         </div>
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 

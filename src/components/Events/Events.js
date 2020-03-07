@@ -1,18 +1,20 @@
 import React from 'react';
+import './Events.style.scss';
 import { useSelector } from 'react-redux';
-import { selectGame, selectTimeToStart } from '../../slices/rouletteSlice';
+import { selectEvents } from '../../slices/rouletteSlice';
 
 const Events = () => {
-  const game = useSelector(selectGame);
-  const time = useSelector(selectTimeToStart);
+  const events = useSelector(selectEvents);
 
   return (
-    <React.Fragment>
+    <div className="events-wrapper">
       <h3>Events</h3>
-      <p>
-        Game {game.id} will start in {time}
-      </p>
-    </React.Fragment>
+      {events.map(event => (
+        <div className="event" key={event.id}>
+          {event.message}
+        </div>
+      ))}
+    </div>
   );
 };
 

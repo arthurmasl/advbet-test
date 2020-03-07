@@ -5,7 +5,8 @@ const api = {
   getConfiguration: () => fetch(`${apiUrl}/configuration`),
   getHistory: () => fetch(`${apiUrl}/history?limit=200`),
   getShedule: () => fetch(`${apiUrl}/scheduledGames`),
-  getGame: id => fetch(`${apiUrl}/game/${id}`)
+  getGame: id => fetch(`${apiUrl}/game/${id}`),
+  getNextGame: () => fetch(`${apiUrl}/nextGame`)
 };
 
 export default api;

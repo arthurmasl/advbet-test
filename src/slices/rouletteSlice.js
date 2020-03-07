@@ -8,8 +8,7 @@ const rouletteSlice = createSlice({
     shedule: {},
     log: [],
     events: [],
-    isSpinning: false,
-    timeToStart: 0
+    isSpinning: false
   },
   reducers: {
     setConfig(state, action) {
@@ -27,23 +26,22 @@ const rouletteSlice = createSlice({
     setLog(state, action) {
       const date = new Date();
 
-      state.log.push(`${date} ${action.payload}`);
+      state.log.push(`${date.toISOString()} ${action.payload}`);
     },
 
     setIsSpinning(state, action) {
       state.isSpinning = action.payload;
     },
 
-    setGame(state, action) {
-      state.game = action.payload;
+    addEvent(state, action) {
+      state.events.push(action.payload);
     },
 
-    setTime(state, action) {
-      state.timeToStart = action.payload;
-    },
-
-    setEvents(state, action) {
-      state.events = action.payload;
+    setEvent(state, action) {
+      state.events[state.events.length - 1] = {
+        ...state.events[state.events.length - 1],
+        ...action.payload
+      };
     }
   }
 });
@@ -53,7 +51,7 @@ export const selectStats = state => state.roulette.stats;
 export const selectLog = state => state.roulette.log;
 export const selectIsSpinning = state => state.roulette.isSpinning;
 export const selectGame = state => state.roulette.shedule;
-export const selectTimeToStart = state => state.roulette.timeToStart;
+export const selectEvents = state => state.roulette.events;
 
 export const {
   setConfig,
@@ -61,6 +59,7 @@ export const {
   setShedule,
   setLog,
   setIsSpinning,
-  setTime
+  addEvent,
+  setEvent
 } = rouletteSlice.actions;
 export default rouletteSlice.reducer;

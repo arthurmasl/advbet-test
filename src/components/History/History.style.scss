@@ -1,10 +1,8 @@
 .history {
-  margin-bottom: 3em;
   display: grid;
-  grid-template-columns: 1fr 100%;
+  grid-template-columns: 1fr 13fr;
 
-  min-width: 1200px;
-  max-width: 1800px;
+  min-width: 1300px;
 }
 
 .history-labels {
