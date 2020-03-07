@@ -1,52 +1,31 @@
-import {
-  setShedule,
-  setLog,
-  addEvent,
-  setEvent
-} from '../slices/rouletteSlice';
+import { setShedule, setLog, addEvent } from '../slices/rouletteSlice';
 import api from '../utils/api';
 import { getGame } from './getGame';
 import { getHistory } from './getHistory';
+import { counter } from './counter';
 
 let timer = null;
 
 export const getNextGame = async dispatch => {
   const response = await api.getNextGame();
-  const data = await response.json();
+  const game = await response.json();
 
   dispatch(getHistory);
   dispatch(setLog('Checking for new game'));
   dispatch(setLog(`GET ../nextGame`));
 
-  if (data) {
-    const game = data;
+  if (game) {
     const timeToStart = game.fakeStartDelta;
 
     dispatch(setShedule(game));
     dispatch(setLog(`Sleeping for ${timeToStart} sec`));
     dispatch(addEvent({ id: game.id, time: timeToStart }));
 
-    timer = setInterval(() => dispatch(timerFn), 1000);
+    timer = setInterval(() => dispatch(counter), 1000);
 
     setTimeout(() => {
       clearInterval(timer);
       dispatch(getGame(game.id));
     }, timeToStart * 1000);
-  }
-};
-
-const timerFn = async (dispatch, getState) => {
-  const state = getState();
-  const { events } = state.roulette;
-
-  const lastEvent = events[events.length - 1];
-
-  if (lastEvent.time > 0) {
-    dispatch(
-      setEvent({
-        time: lastEvent.time - 1,
-        message: `Game ${lastEvent.id} starts in ${lastEvent.time - 1}`
-      })
-    );
   }
 };

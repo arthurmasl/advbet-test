@@ -10,9 +10,9 @@ const Board = () => {
     <div className="board-wrapper">
       <h3>Game board</h3>
       <div className="board">
-        {board.map(({ results, colors, positionToId }) => (
-          <button key={results} className={`board-cell ${colors}`}>
-            {positionToId}
+        {board.map(({ item, color }) => (
+          <button key={item} className={`board-cell ${color}`}>
+            {item}
           </button>
         ))}
       </div>

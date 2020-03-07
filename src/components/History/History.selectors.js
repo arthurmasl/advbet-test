@@ -9,9 +9,9 @@ export const selectHistory = createSelector(
     const history = stats.reduce((acc, curr) => {
       if (!acc[curr.result]) {
         acc[curr.result] = {
-          hits: 0,
+          hits: 1,
           slot: curr.result,
-          color: board.find(item => +item.results === curr.result).colors
+          color: board.find(i => +i.item === curr.result).color
         };
       } else {
         acc[curr.result].hits += 1;

@@ -1,6 +1,5 @@
 .app-wrapper {
   min-width: 300px;
-  min-height: 100vh;
   padding: 1.5em;
   display: grid;
 
@@ -8,7 +7,7 @@
   margin: 0 auto;
 
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 100%;
+  grid-template-rows: auto 1fr;
   grid-gap: 2em;
   grid-template-areas:
     'top top'

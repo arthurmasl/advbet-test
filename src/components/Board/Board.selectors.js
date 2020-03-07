@@ -2,15 +2,12 @@ import { createSelector } from '@reduxjs/toolkit';
 import { selectConfig } from '../../slices/rouletteSlice';
 
 export const selectBoard = createSelector(selectConfig, config => {
-  const board = [];
+  if (!config.name) return [];
 
-  Object.entries(config).forEach(([key, value]) => {
-    if (!Array.isArray(value)) return;
-
-    value.forEach((item, i) => {
-      board[i] = { ...board[i], [key]: item };
-    });
-  });
+  const board = config.positionToId.map(item => ({
+    item,
+    color: config.colors[item]
+  }));
 
   return board;
 });
