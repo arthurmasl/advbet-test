@@ -1,0 +1,23 @@
+.board {
+  display: grid;
+  grid-gap: 3px;
+  grid-template-columns: repeat(auto-fit, minmax(3em, 3em));
+}
+
+.board-cell {
+  color: #fff;
+  border: none;
+  padding: 1.5em;
+}
+
+.green {
+  background-color: #449d44;
+}
+
+.red {
+  background-color: #d9534f;
+}
+
+.black {
+  background-color: #333;
+}
